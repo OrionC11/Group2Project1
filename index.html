@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Flight & Flush</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.0/css/bulma.css"/>
+    </head>
+    <body>
+        <nav class="nav">
+          <div class="nav-left">
+            <a class="nav-item">
+              <img src="http://bulma.io/images/bulma-logo.png" alt="Bulma logo">
+            </a>
+          </div>
+        
+          <div class="nav-center">
+            <a class="nav-item">
+              <span class="icon">
+                <i class="fa fa-github"></i>
+              </span>
+            </a>
+            <a class="nav-item">
+              <span class="icon">
+                <i class="fa fa-twitter"></i>
+              </span>
+            </a>
+          </div>
+        
+          <!-- This "nav-toggle" hamburger menu is only visible on mobile -->
+          <!-- You need JavaScript to toggle the "is-active" class on "nav-menu" -->
+          <span class="nav-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        
+          <!-- This "nav-menu" is hidden on mobile -->
+          <!-- Add the modifier "is-active" to display it on mobile -->
+          <div class="nav-right nav-menu">
+            <a class="nav-item">
+              Home
+            </a>
+            <a class="nav-item">
+              Documentation
+            </a>
+            <a class="nav-item">
+              Blog
+            </a>
+        
+            <span class="nav-item">
+              <a class="button" >
+                <span clss="icon">
+                  <i class="fa fa-twitter"></i>
+                </span>
+                <span>Tweet</span>
+              </a>
+              <a class="button is-primary">
+                <span class="icon">
+                  <i class="fa fa-download"></i>
+                </span>
+                <span>Download</span>
+              </a>
+            </span>
+          </div>
+        </nav>
+        <section class="hero">
+          <div class="hero-body">
+            <div class="container">
+              <h1 class="title">
+                Hero title
+              </h1>
+              <h2 class="subtitle">
+                Hero subtitle
+              </h2>
+            </div>
+          </div>
+        </section>
+        <div class="container">
+          <p>Hello I am in the container</p>
+          <div class="userInput columns">
+            <div class="column">
+                <label for="depart">Departure Date:</label>
+                <input type="text"
+                class="form-control"
+                id="datepicker"
+                autocomplete="off">
+            </div>
+            <div class="column">
+                <label for= "########"> Date: </label>
+                <input type="text"
+                class="form-control"
+                id="datepicker"
+                autocomplete="off">
+            </div>
+            <div class="column">
+                  <a class="button is-link">Link</a>
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column">
+                <label for="departCity">Departing From:</label>
+                <input type="text" class="departureCity"> 
+            </div>
+            <div class="column">
+                <label for="ArrivalCity">Going to:</label>
+                <input type="text" class="arrivalCity">
+            </div>
+            <div class="column">
+                <button class="button" type="submit">Submit</button>
+            </div>
+          </div>
+          
+        </div>
+    </body>
+</html>
