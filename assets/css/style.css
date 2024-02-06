@@ -1,7 +1,22 @@
+nav {
+    background-color: #444444;
+}
 
+body {
+    background-image:linear-gradient(to right, lightskyblue, blue, purple)
+}
+
+h1 {
+    color: lightskyblue;
+    font-size: 40px;
+}
 .mapContainer {
     width: 50vw; 
     height: 50vh;
     border: 1px solid black;
 
 }
+.userInput {
+    background-color: rgba(99, 99, 99, 0.75)
+}
+
