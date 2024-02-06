@@ -1,143 +1,147 @@
 <!DOCTYPE html>
 <html lang="">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Flight & Flush</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.0/css/bulma.css"/>
-    </head>
-    <body>
-        <nav class="nav">
-          <div class="nav-left">
-            <a class="nav-item">
-              <img src="http://bulma.io/images/bulma-logo.png" alt="Bulma logo">
-            </a>
-          </div>
-        
-          <div class="nav-center">
-            <a class="nav-item">
-              <span class="icon">
-                <i class="fa fa-github"></i>
-              </span>
-            </a>
-            <a class="nav-item">
-              <span class="icon">
-                <i class="fa fa-twitter"></i>
-              </span>
-            </a>
-          </div>
-        
-          <!-- This "nav-toggle" hamburger menu is only visible on mobile -->
-          <!-- You need JavaScript to toggle the "is-active" class on "nav-menu" -->
-          <span class="nav-toggle">
-            <span></span>
-            <span></span>
-            <span></span>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flight & Flush</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.0/css/bulma.css" />
+  <link rel="stylesheet" href="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.1/maps/maps.css" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
+
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="nav-left">
+      <a class="nav-item">
+        <img src="http://bulma.io/images/bulma-logo.png" alt="Bulma logo">
+      </a>
+    </div>
+
+    <div class="nav-center">
+      <a class="nav-item">
+        <span class="icon">
+          <i class="fa fa-github"></i>
+        </span>
+      </a>
+      <a class="nav-item">
+        <span class="icon">
+          <i class="fa fa-twitter"></i>
+        </span>
+      </a>
+    </div>
+
+    <!-- This "nav-toggle" hamburger menu is only visible on mobile -->
+    <!-- You need JavaScript to toggle the "is-active" class on "nav-menu" -->
+    <span class="nav-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </span>
+
+    <!-- This "nav-menu" is hidden on mobile -->
+    <!-- Add the modifier "is-active" to display it on mobile -->
+    <div class="nav-right nav-menu">
+      <a class="nav-item">
+        Home
+      </a>
+      <a class="nav-item">
+        Documentation
+      </a>
+      <a class="nav-item">
+        Blog
+      </a>
+
+      <span class="nav-item">
+        <a class="button">
+          <span clss="icon">
+            <i class="fa fa-twitter"></i>
           </span>
-        
-          <!-- This "nav-menu" is hidden on mobile -->
-          <!-- Add the modifier "is-active" to display it on mobile -->
-          <div class="nav-right nav-menu">
-            <a class="nav-item">
-              Home
-            </a>
-            <a class="nav-item">
-              Documentation
-            </a>
-            <a class="nav-item">
-              Blog
-            </a>
-        
-            <span class="nav-item">
-              <a class="button" >
-                <span clss="icon">
-                  <i class="fa fa-twitter"></i>
-                </span>
-                <span>Tweet</span>
-              </a>
-              <a class="button is-primary">
-                <span class="icon">
-                  <i class="fa fa-download"></i>
-                </span>
-                <span>Download</span>
-              </a>
-            </span>
-          </div>
-        </nav>
-        <section class="hero">
-          <div class="hero-body">
-            <div class="container">
-              <h1 class="title">
-                Hero title
-              </h1>
-              <h2 class="subtitle">
-                Hero subtitle
-              </h2>
-            </div>
-          </div>
-        </section>
-        <div class="container">
-          <p>Hello I am in the container</p>
-          <div class="userInput columns">
-            <div class="column">
-                <label for="depart">Departure Date:</label>
-                <input type="text"
-                class="form-control"
-                id="datepicker"
-                autocomplete="off">
-            </div>
-            <div class="column">
-                <label for= "return"> Return Date: </label>
-                <input type="text"
-                class="form-control"
-                id="datepicker"
-                autocomplete="off">
-            </div>
-            <div class="column">
-                  <a class="button is-link">Link</a>
-            </div>
-          </div>
-          <div class="columns">
-            <div class="column">
-                <label for="departCity">Departing From:</label>
-                <input type="text" class="departureCity"> 
-            </div>
-            <div class="column">
-                <label for="ArrivalCity">Going to:</label>
-                <input type="text" class="arrivalCity">
-            </div>
-            <div class="column">
-                <button class="button" type="submit">Submit</button>
-            </div>
-          </div>
-          <div class = "flightsContainer">
-            <div class = "departureFlight">
+          <span>Tweet</span>
+        </a>
+        <a class="button is-primary">
+          <span class="icon">
+            <i class="fa fa-download"></i>
+          </span>
+          <span>Download</span>
+        </a>
+      </span>
+    </div>
+  </nav>
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          Hero title
+        </h1>
+        <h2 class="subtitle">
+          Hero subtitle
+        </h2>
+      </div>
+    </div>
+  </section>
+  <div class="container">
+    <p>Hello I am in the container</p>
+    <div class="userInput columns">
+      <div class="column">
+        <label for="depart">Departure Date:</label>
+        <input type="text" class="form-control" id="datepicker" autocomplete="off">
+      </div>
+      <div class="column">
+        <label for="return"> Return Date: </label>
+        <input type="text" class="form-control" id="datepicker" autocomplete="off">
+      </div>
+      <div class="column">
+        <a class="button is-link">Link</a>
+      </div>
+    </div>
+    <div class="columns">
+      <div class="column">
+        <label for="departCity">Departing From:</label>
+        <input type="text" class="departureCity">
+      </div>
+      <div class="column">
+        <label for="ArrivalCity">Going to:</label>
+        <input type="text" class="arrivalCity">
+      </div>
+      <div class="column">
+        <button class="button" type="submit">Submit</button>
+      </div>
+    </div>
+  </div>
+  <div class="flightsContainer">
+    <div class="departureFlight">
 
-            </div>
-            <div class="returnFlight">
+    </div>
+    <div class="returnFlight">
+    </div>
 
-            </div>
-          </div>
-          <div class ="mapContainer">
-
-          </div>
-          <footer class="footer">
-            <div class="container">
-              <div class="content has-text-centered">
-                <p>
-                  <strong>Bulma</strong> by <a href="http://jgthms.com">Jeremy Thomas</a>. The source code is licensed
-                  <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
-                  is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC ANS 4.0</a>.
-                </p>
-                <p>
-                  <a class="icon" href="https://github.com/jgthms/bulma">
-                    <i class="fa fa-github"></i>
-                  </a>
-                </p>
-              </div>
-            </div>
-          </footer>
+    <div class="mapContainer">
+      <div id="map" class="map"></div>
+    </div>
+    <footer class="footer">
+      <div class="container">
+        <div class="content has-text-centered">
+          <p>
+            <strong>Bulma</strong> by <a href="http://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+            <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+            is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC ANS 4.0</a>.
+          </p>
+          <p>
+            <a class="icon" href="https://github.com/jgthms/bulma">
+              <i class="fa fa-github"></i>
+            </a>
+          </p>
         </div>
-    </body>
+      </div>
+    </footer>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script type="text/JavaScript"
+    src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.1/maps/maps-web.min.js"></script>
+  <script src="./assets/js/script.js"></script>
+</body>
+
 </html>
