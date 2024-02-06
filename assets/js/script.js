@@ -1,4 +1,4 @@
-var mapContainer = $('#map')
+// var mapContainer = $('#map')
 function displayMap(){
     let center = [4,44.4]
     var map = tt.map({

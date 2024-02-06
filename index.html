@@ -7,7 +7,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Flight & Flush</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.0/css/bulma.css" />
-  <link rel="stylesheet" href="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.1/maps/maps.css" />
+  <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.0/maps/maps.css"
+    />
+    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.0/maps/maps-web.min.js"></script>
+    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.0/services/services-web.min.js"></script>
   <link rel="stylesheet" href="./assets/css/style.css" />
 
 </head>
@@ -110,37 +116,32 @@
         <button class="button" type="submit">Submit</button>
       </div>
     </div>
-  </div>
-  <div class="flightsContainer">
-    <div class="departureFlight">
-
+    <div class="flightsContainer">
+      <div class="departureFlight">
+        
+      </div>
+      <div class="returnFlight">
+      </div>
     </div>
-    <div class="returnFlight">
-    </div>
-
     <div class="mapContainer">
-      <div id="map" class="map"></div>
+      <div id="map" class="map" style="width: 100%; height: 100%;"></div>
     </div>
+  </div>
     <footer class="footer">
       <div class="container">
         <div class="content has-text-centered">
           <p>
-            <strong>Bulma</strong> by <a href="http://jgthms.com">Jeremy Thomas</a>. The source code is licensed
-            <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
-            is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC ANS 4.0</a>.
+            
           </p>
           <p>
             <a class="icon" href="https://github.com/jgthms/bulma">
               <i class="fa fa-github"></i>
-            </a>
-          </p>
-        </div>
+          </a>
+        </p>
       </div>
-    </footer>
-  </div>
+    </div>
+  </footer>
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-  <script type="text/JavaScript"
-    src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.1/maps/maps-web.min.js"></script>
   <script src="./assets/js/script.js"></script>
 </body>
 
