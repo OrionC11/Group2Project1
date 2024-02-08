@@ -8,9 +8,12 @@
   <title>Flight & Flush</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.0/css/bulma.css" />
   <link rel="stylesheet" type="text/css" href="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.0/maps/maps.css" />
+  <link rel="stylesheet" href="./assets/css/style.css"/>
   <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.0/maps/maps-web.min.js"></script>
   <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.0/services/services-web.min.js"></script>
-  <link rel="stylesheet" href="./assets/css/style.css" />
+  
+
+
 
 </head>
 
@@ -73,14 +76,14 @@
 
         <div class="column">
           <label for="depart">Departure Date:</label>
-          <input type="text" class="form-control" id="datepicker" autocomplete="off">
+          <input type="text" class="form-control ddate" id="datepicker" autocomplete="off">
         </div>
         <div class="column">
           <label for="return"> Return Date: </label>
-          <input type="text" class="form-control" id="datepicker" autocomplete="off">
+          <input type="text" class="form-control rdate" id="datepicker" autocomplete="off">
         </div>
         <div class="column">
-          <a class="button is-link">Advanced Search</a>
+          <a class="button is-link searchModal">Advanced Search</a>
         </div>
       </div>
       <div class="columns">
