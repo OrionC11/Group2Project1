@@ -8,6 +8,7 @@
   <title>Flight & Flush</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.0/css/bulma.css" />
   <link rel="stylesheet" type="text/css" href="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.0/maps/maps.css" />
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"/>
   <link rel="stylesheet" href="./assets/css/style.css"/>
   <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.0/maps/maps-web.min.js"></script>
   <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.0/services/services-web.min.js"></script>
@@ -76,11 +77,11 @@
 
         <div class="column">
           <label for="depart">Departure Date:</label>
-          <input type="text" class="form-control ddate" id="datepicker" autocomplete="off">
+          <input type="text" class="form-control ddate dp" id="datepicker" autocomplete="off">
         </div>
         <div class="column">
           <label for="return"> Return Date: </label>
-          <input type="text" class="form-control rdate" id="datepicker" autocomplete="off">
+          <input type="text" class="form-control rdate dp" id="dp2" autocomplete="off">
         </div>
         <div class="column">
           <button class="button is-link searchModal js-modal-trigger" data-target="modal-js-primary">Advanced Search</button>
@@ -133,7 +134,8 @@
       </div>
     </div>
   </footer>
-  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
   <script src="./assets/js/script.js"></script>
 </body>
 
