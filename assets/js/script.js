@@ -30,17 +30,6 @@ $(function () {
         changeYear: true
     })
 });
-var departAirport = $(".departureCity").val()
-var arrivalAirport = $(".arrivalCity").val()
-var departDate = $(".ddate").val()
-
-let flightUrl = "https://test.api.amadeus.com/v2/shopping/flight-offers?" + "originLocationCode=" + departAirport + "&destinationLocationCode=" + arrivalAirport + "departureDate=" + departDateEl + "&adults=1&max=2";
-
-fetch(flightUrl)
-    .then((response) => response.json())
-    .then(data)
-console.log(data);
-
 document.addEventListener('DOMContentLoaded', () => {
     // Functions to open and close a modal
     function openModal($el) {
@@ -61,9 +50,10 @@ document.addEventListener('DOMContentLoaded', () => {
     (document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
       const modal = $trigger.dataset.target;
       const $target = document.getElementById(modal);
-  
+    
       $trigger.addEventListener('click', () => {
         openModal($target);
+        console.log("this is happening")
       });
     });
   
@@ -83,4 +73,15 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+var departAirport = $(".departureCity").val()
+var arrivalAirport = $(".arrivalCity").val()
+var departDate = $(".ddate").val()
+
+let flightUrl = "https://test.api.amadeus.com/v2/shopping/flight-offers?" + "originLocationCode=" + departAirport + "&destinationLocationCode=" + arrivalAirport + "departureDate=" + departDateEl + "&adults=1&max=2";
+
+fetch(flightUrl)
+    .then((response) => response.json())
+    .then(data)
+console.log(data);
+
 
