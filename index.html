@@ -84,7 +84,15 @@
           <input type="text" class="form-control rdate dp" id="dp2" autocomplete="off">
         </div>
         <div class="column">
-          <a class="button is-link searchModal">Advanced Search</a>
+          <button class="button is-link searchModal js-modal-trigger" data-target="modal-js-primary">Advanced Search</button>
+
+          <div class="modal" id="modal">
+            <div class="modal-background"></div>
+            <div class="modal-content">
+              <!-- Any other Bulma elements you want -->
+            </div>
+            <button class="modal-close is-large" aria-label="close"></button>
+          </div>
         </div>
       </div>
       <div class="columns">
