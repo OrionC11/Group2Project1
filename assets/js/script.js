@@ -81,21 +81,23 @@ function createSearchBox() {
             key: "ZKJKtC3EXjK9EOei1P0ipgADrv9RblQy",
             language: "en-GB",
             limit: 5,
-            query: "restroom"
-
+            // query: "restroom"
+            
         },
-        autocompleteOptions: {
-            key: "ZKJKtC3EXjK9EOei1P0ipgADrv9RblQy",
-            language: "en-GB",
-        },
-
-    }
-
+        // autocompleteOptions: {
+            //     key: "ZKJKtC3EXjK9EOei1P0ipgADrv9RblQy",
+            //     language: "en-GB",
+            // },
+            
+        }
+        
     var ttSearchBox = new tt.plugins.SearchBox(tt.services, options)
+    console.log("dang")
     console.log(ttSearchBox, options)
     var searchBoxHTML = ttSearchBox.getSearchBoxHTML()
     var modalEl = $(".box") 
-    modalEl.appendChild(searchBoxHTML)
+    console.log(modalEl)
+    modalEl.append(searchBoxHTML)
 }
 
 
@@ -104,16 +106,18 @@ function createSearchBox() {
 
 
 
+function flightfunction (){
+    var departAirport = $(".departureCity").val()
+    var arrivalAirport = $(".arrivalCity").val()
+    var departDate = $(".ddate").val()
+    
+    let flightUrl = "https://test.api.amadeus.com/v2/shopping/flight-offers?" + "originLocationCode=" + departAirport + "&destinationLocationCode=" + arrivalAirport + "departureDate=" + departDateEl + "&adults=1&max=2";
+    
+    fetch(flightUrl)
+        .then((response) => response.json())
+        .then(data)
+    console.log(data);
 
-var departAirport = $(".departureCity").val()
-var arrivalAirport = $(".arrivalCity").val()
-var departDate = $(".ddate").val()
-
-let flightUrl = "https://test.api.amadeus.com/v2/shopping/flight-offers?" + "originLocationCode=" + departAirport + "&destinationLocationCode=" + arrivalAirport + "departureDate=" + departDateEl + "&adults=1&max=2";
-
-fetch(flightUrl)
-    .then((response) => response.json())
-    .then(data)
-console.log(data);
+}
 
 
