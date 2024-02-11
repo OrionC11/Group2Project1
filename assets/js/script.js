@@ -100,12 +100,6 @@ function createSearchBox() {
     modalEl.append(searchBoxHTML)
 }
 
-
-
-
-
-
-
 function flightfunction (){
     var departAirport = $(".departureCity").val()
     var arrivalAirport = $(".arrivalCity").val()
@@ -119,5 +113,3 @@ function flightfunction (){
     console.log(data);
 
 }
-
-
