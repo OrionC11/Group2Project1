@@ -1,9 +1,9 @@
 nav {
-    background-color: #444444;
+    
 }
 
 body {
-    background-image:linear-gradient(to right, lightskyblue, blue, purple)
+    background-image:
 }
 
 h1 {
@@ -11,12 +11,34 @@ h1 {
     font-size: 40px;
 }
 .mapContainer {
+
     width: 50vw; 
     height: 50vh;
     border: 1px solid black;
 
 }
 .userInput {
-    background-color: rgba(99, 99, 99, 0.75)
+    background-color: rgb(204, 200, 200);
+    position:sticky;
 }
 
+#ui-datepicker-div {
+    background-color: whitesmoke;
+    border: 7px double #b6abab;
+}
+
+.mapContainer {
+    /* position: relative; */
+    
+}
+div.column {
+    position: relative;
+}
+
+div.box {
+    
+}
+
+footer {
+    
+}
