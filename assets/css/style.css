@@ -3,20 +3,30 @@ nav {
 }
 
 body {
-    background-image:
+    
 }
 
 h1 {
     color: lightskyblue;
     font-size: 40px;
 }
-.mapContainer {
 
+title {
+
+}
+
+h2.subtitle {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px;
+}
+
+.mapContainer {
     width: 50vw; 
     height: 50vh;
     border: 1px solid black;
 
 }
+
 .userInput {
     background-color: rgb(204, 200, 200);
     position:sticky;
@@ -27,17 +37,20 @@ h1 {
     border: 7px double #b6abab;
 }
 
-.mapContainer {
-    /* position: relative; */
-    
+modal-content.box {
+    position: relative;
+    z-index: 1;
 }
+
+.mapContainer {
+    position: relative;
+    z-index: 2;
+}
+
 div.column {
     position: relative;
 }
 
-div.box {
-    
-}
 
 footer {
     
