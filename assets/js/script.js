@@ -234,8 +234,10 @@ $('.submitBtn').click(function () {
 
     getAirportCode(departureCity, function (departureCode) {
         departureAirportCode = departureCode;
+        console.log ("Departure Airport Code: " + departureAirportCode)
         getAirportCode(arrivalCity, function (arrivalCode) {
             arrivalAirportCode = arrivalCode;
+            console.log("Arrival Airport Code: "+arrivalAirportCode)
             // Now that we have both airport codes, call getFlightOffers
             if (departureAirportCode && arrivalAirportCode) {
                 getAccessCode(function (accessToken) {
@@ -243,11 +245,9 @@ $('.submitBtn').click(function () {
                         console.log('Error: Access token not obtained.');
                         return;
                     }
-                    getFlightOffers(accessToken, departureAirportCode, arrivalAirportCode, function (flightOffers) {
-                        console.log(flightOffers);
+                    
                     });
-                });
-            } else {
+                } else {
                 console.log('Error: Airport codes not obtained.');
             }
         });
@@ -256,13 +256,16 @@ $('.submitBtn').click(function () {
 
 // Modify getFlightOffers function to accept departure and arrival airport codes
 function getFlightOffers(accessToken, departureAirportCode, arrivalAirportCode, callback) {
+    var date = $('#datepicker').datepicker({dateFormat: 'YY-MM-DD'}).val();
+    console.log(date)
+
     $.ajax({
         url: 'https://test.api.amadeus.com/v2/shopping/flight-offers',
         method: 'GET',
         data: {
             originLocationCode: departureAirportCode,
             destinationLocationCode: arrivalAirportCode,
-            departureDate: $('#datepicker').val(),
+            departureDate: date,
             adults: 1
         },
         headers: {
