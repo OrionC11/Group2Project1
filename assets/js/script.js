@@ -68,13 +68,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
         $close.addEventListener('click', () => {
             closeModal($target);
+            var modalEl = $(".box")
+            modalEl.html('');
+            
         });
     });
 
     // Add a keyboard event to close all modals
     document.addEventListener('keydown', (event) => {
-        if (e.key === "Escape") {
+        if (event.key === "Escape") {
             closeAllModals();
+            var modalEl = $(".box")
+            modalEl.html('');
         }
     });
 });
