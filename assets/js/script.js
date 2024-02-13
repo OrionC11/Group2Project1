@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
             closeModal($target);
             var modalEl = $(".box")
             modalEl.html('');
-            
+
         });
     });
 
@@ -122,7 +122,7 @@ function getAccessCode(callback) {
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         },
-        success: function(response) {
+        success: function (response) {
             console.log(response)
             if (response && response.access_token) {
                 callback(response.access_token);
@@ -131,16 +131,52 @@ function getAccessCode(callback) {
                 callback(null);
             }
         },
-        error: function(xhr, status, error) {
+        error: function (xhr, status, error) {
             console.log('Error:', xhr.responseText);
             callback(null);
         }
     });
 }
+
+function getFlightOffers(cityName, callback) {
+    var departureCity = $('.departureCity').val();
+    var arrivalCity = $('.arrivalCity').val();
+    getAccessCode(function (accessToken) {
+        if (!accessToken) {
+            console.log('Error: Access token not obtained.');
+            callback(null);
+            return;
+        }})
+        $.ajax({
+            url: 'test.api.amadeus.com/v2/shopping/flight-offers',
+            method: 'GET',
+            data: {
+                originLocationCode:   getAirportCode(departureCity, function (departureAirportCode) {
+                    if (!departureAirportCode) {
+                        console.log('Error: Departure city not found.');
+                        return;
+                    }}),
+                destinationLocationCode: getAirportCode(arrivalCity, function (arrivalAirportCode) {
+                    if (!arrivalAirportCode) {
+                        console.log('Error: Arrival city not found.');
+                        return;
+                    }}),
+                departureDate: $('#datepicker').val(),
+                adults: 1
+            },
+            headers: {
+                'Authorization': "Bearer " + accessToken
+            },
+            success: function(response) {
+                console.log(response)
+            }
+        })
+    }
+
 // Define getAirportCode function
 function getAirportCode(cityName, callback) {
     // Call getAccessCode to retrieve access token
-    getAccessCode(function(accessToken) {
+    getAccessCode(function (accessToken) {
         if (!accessToken) {
             console.log('Error: Access token not obtained.');
             callback(null);
@@ -157,7 +193,7 @@ function getAirportCode(cityName, callback) {
             headers: {
                 'Authorization': "Bearer " + accessToken
             },
-            success: function(response) {
+            success: function (response) {
                 if (response.data && response.data.length > 0) {
                     var airportCode = response.data[0].iataCode;
                     callback(airportCode);
@@ -166,7 +202,7 @@ function getAirportCode(cityName, callback) {
                     callback(null);
                 }
             },
-            error: function(xhr, status, error) {
+            error: function (xhr, status, error) {
                 console.log('Error:', xhr.responseText);
                 callback(null);
             }
@@ -174,21 +210,18 @@ function getAirportCode(cityName, callback) {
     });
 }
 // Click event handler for the submit button
-$('.submitBtn').click(function() {
-    var departureCity = $('.departureCity').val();
-    var arrivalCity = $('.arrivalCity').val();
-    getAirportCode(departureCity, function(departureAirportCode) {
+$('.submitBtn').click(function () {
+
+    getFlightOffers(function (departureAirportCode, arrivalAirportCode) {
+
         if (!departureAirportCode) {
-            console.log('Error: Departure city not found.');
+            console.log('Error: Departure Airport Code not found.');
+            callback(null);
+            return;
+        } else if (!arrivalAirportCode){
+            console.log('Error: Arrival Airport Code not found.');
+            callback(null);
             return;
         }
-        getAirportCode(arrivalCity, function(arrivalAirportCode) {
-            if (!arrivalAirportCode) {
-                console.log('Error: Arrival city not found.');
-                return;
-            }
-            console.log('Departure Airport Code:', departureAirportCode);
-            console.log('Arrival Airport Code:', arrivalAirportCode);
-        });
-    });
-});
+    })
+})
