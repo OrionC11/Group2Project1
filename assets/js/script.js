@@ -110,104 +110,85 @@ function createSearchBox() {
 }
 
 
-function getAirportCode(cityName, callback) {
-    var getAccessCode = function(){
-        var accessToken = ""
-        $.ajax({
-            url: "https://test.api.amadeus.com/v1/security/oauth2/token",
-            method: 'POST',
-            data: {
-                grant_type: "client_credentials",
-                client_id: "fbjcGA5jsGIuiu2gNgHUJ0CfqCyZ9dMp",
-                client_secret: "P1wiYMjga5fzgGwe"
-            },
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            success: function(response) {
-                console.log(response)
-                if (response) {
-                     var accessToken = response.access_token
-                    // console.log(access)
-            } else {
-                console.log('No access token found')
-            }
-        }
-        }).then(response, function(){
-            return accessToken
-        }
-
-        )
-        // return access
-    }
-    var access = getAccessCode()
-    console.log(access)
+function getAccessCode(callback) {
     $.ajax({
-        url: 'https://test.api.amadeus.com/v1/reference-data/locations',
-        method: 'GET',
+        url: "https://test.api.amadeus.com/v1/security/oauth2/token",
+        method: 'POST',
         data: {
-            subType: 'CITY,AIRPORT',
-            keyword: cityName
+            grant_type: "client_credentials",
+            client_id: "fbjcGA5jsGIuiu2gNgHUJ0CfqCyZ9dMp",
+            client_secret: "P1wiYMjga5fzgGwe"
         },
         headers: {
-            'Authorization': "Bearer "+access
+            'Content-Type': 'application/x-www-form-urlencoded'
         },
-        success: function (response) {
-            if (response.data && response.data.length > 0) {
-                var airportCode = response.data[0].iataCode
-                callback(airportCode)
-                return airportCode
+        success: function(response) {
+            console.log(response)
+            if (response && response.access_token) {
+                callback(response.access_token);
             } else {
-                console.log('No airports found for the specified city.')
-                callback(null)
+                console.log('No access token found');
+                callback(null);
             }
         },
-        error: function (xhr, status, error) {
-            console.log('Error:', xhr.responseText)
-            callback(null)
+        error: function(xhr, status, error) {
+            console.log('Error:', xhr.responseText);
+            callback(null);
         }
     });
 }
-
-
-// function flightfunction() {
-//     var departAirport = $(".departureCity").val()
-//     var arrivalAirport = $(".arrivalCity").val()
-//     var departDate = $(".ddate").val()
-
-//     let flightUrl = "https://test.api.amadeus.com/v2/shopping/flight-offers?" + "originLocationCode=" + departAirport + "&destinationLocationCode=" + arrivalAirport + "departureDate=" + departDateEl + "&adults=1&max=2";
-
-//     $.ajax({
-//         url: flightUrl,
-//         method: 'GET',
-//         dataType: 'JSON',
-//         data: {
-//             "client_id": "3sY9VNvXIjyJYd5mmOtOzJLuL1BzJBBp",
-
-
-//         }
-//     })
-//         .then((response) => response.json())
-//         .then(data)
-//     console.log(data);
-
-// }
-$('.submitBtn').click(function () {
-    var departureCity = $('.departureCity').val()
-    var arrivalCity = $('.arrivalCity').val()
-    getAirportCode(departureCity, function (departureAirportCode) {
-        if (!departureAirportCode) {
-            console.log('Error: Departure city not found.')
+// Define getAirportCode function
+function getAirportCode(cityName, callback) {
+    // Call getAccessCode to retrieve access token
+    getAccessCode(function(accessToken) {
+        if (!accessToken) {
+            console.log('Error: Access token not obtained.');
+            callback(null);
             return;
-        } 
-    })
-        getAirportCode(arrivalCity, function (arrivalAirportCode) {
+        }
+        // Use the obtained access token to make API call for airport codes
+        $.ajax({
+            url: 'https://test.api.amadeus.com/v1/reference-data/locations',
+            method: 'GET',
+            data: {
+                subType: 'CITY,AIRPORT',
+                keyword: cityName
+            },
+            headers: {
+                'Authorization': "Bearer " + accessToken
+            },
+            success: function(response) {
+                if (response.data && response.data.length > 0) {
+                    var airportCode = response.data[0].iataCode;
+                    callback(airportCode);
+                } else {
+                    console.log('No airports found for the specified city.');
+                    callback(null);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.log('Error:', xhr.responseText);
+                callback(null);
+            }
+        });
+    });
+}
+// Click event handler for the submit button
+$('.submitBtn').click(function() {
+    var departureCity = $('.departureCity').val();
+    var arrivalCity = $('.arrivalCity').val();
+    getAirportCode(departureCity, function(departureAirportCode) {
+        if (!departureAirportCode) {
+            console.log('Error: Departure city not found.');
+            return;
+        }
+        getAirportCode(arrivalCity, function(arrivalAirportCode) {
             if (!arrivalAirportCode) {
-                console.log('Error: Arrival city not found.')
-                return 
-            } 
-        
-            console.log('Departure Airport Code:', departureAirportCode)
-            console.log('Arrival Airport Code:', arrivalAirportCode)
-})
-})
+                console.log('Error: Arrival city not found.');
+                return;
+            }
+            console.log('Departure Airport Code:', departureAirportCode);
+            console.log('Arrival Airport Code:', arrivalAirportCode);
+        });
+    });
+});
