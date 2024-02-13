@@ -8,6 +8,10 @@
 // "expires_in": 1799,
 // "state": "approved",
 // "scope": ""
+let submitBtn = $('.submitBtn')
+
+
+
 function displayMap() {
     let center = [4, 44.4]
     var map = tt.map({
@@ -87,34 +91,94 @@ function createSearchBox() {
             language: "en-GB",
             limit: 5,
             // query: "restroom"
-            
+
         },
-        // autocompleteOptions: {
-            //     key: "ZKJKtC3EXjK9EOei1P0ipgADrv9RblQy",
-            //     language: "en-GB",
-            // },
-            
-        }
-        
+        autocompleteOptions: {
+            key: "ZKJKtC3EXjK9EOei1P0ipgADrv9RblQy",
+            language: "en-GB",
+        },
+
+    }
+    $(".box .tt-search-box").remove();
     var ttSearchBox = new tt.plugins.SearchBox(tt.services, options)
     console.log("dang")
     console.log(ttSearchBox, options)
     var searchBoxHTML = ttSearchBox.getSearchBoxHTML()
-    var modalEl = $(".box") 
+    var modalEl = $(".box")
     console.log(modalEl)
     modalEl.append(searchBoxHTML)
 }
 
-function flightfunction (){
-    var departAirport = $(".departureCity").val()
-    var arrivalAirport = $(".arrivalCity").val()
-    var departDate = $(".ddate").val()
-    
-    let flightUrl = "https://test.api.amadeus.com/v2/shopping/flight-offers?" + "originLocationCode=" + departAirport + "&destinationLocationCode=" + arrivalAirport + "departureDate=" + departDateEl + "&adults=1&max=2";
-    
-    fetch(flightUrl)
-        .then((response) => response.json())
-        .then(data)
-    console.log(data);
-
+function getAirportCode(cityName, callback) {
+    $.ajax({
+        url: 'https://test.api.amadeus.com/v1/reference-data/locations',
+        method: 'GET',
+        data: {
+            subType: 'CITY,AIRPORT',
+            keyword: cityName
+        },
+        headers: {
+            'Authorization': "Bearer u8qLfD1DjVQvxmakDgLiDhG0i8PH"
+        },
+        success: function (response) {
+            if (response.data && response.data.length > 0) {
+                var airportCode = response.data[0].iataCode;
+                callback(airportCode);
+            } else {
+                console.log('No airports found for the specified city.');
+                callback(null);
+            }
+        },
+        error: function (xhr, status, error) {
+            console.log('Error:', xhr.responseText);
+            callback(null);
+        }
+    });
 }
+
+
+// function flightfunction() {
+//     var departAirport = $(".departureCity").val()
+//     var arrivalAirport = $(".arrivalCity").val()
+//     var departDate = $(".ddate").val()
+
+//     let flightUrl = "https://test.api.amadeus.com/v2/shopping/flight-offers?" + "originLocationCode=" + departAirport + "&destinationLocationCode=" + arrivalAirport + "departureDate=" + departDateEl + "&adults=1&max=2";
+
+//     $.ajax({
+//         url: flightUrl,
+//         method: 'GET',
+//         dataType: 'JSON',
+//         data: {
+//             "client_id": "3sY9VNvXIjyJYd5mmOtOzJLuL1BzJBBp",
+
+
+//         }
+//     })
+//         .then((response) => response.json())
+//         .then(data)
+//     console.log(data);
+
+// }
+$('.sumbitBtn').click(function () {
+    var departureCity = $('.departureCity').val();
+    var arrivalCity = $('.arrivalCity').val();
+
+    getAirportCode(departureCity, function (departureAirportCode) {
+        if (!departureAirportCode) {
+            console.log('Error: Departure city not found.');
+            return;
+        }
+
+        getAirportCode(arrivalCity, function (arrivalAirportCode) {
+            if (!arrivalAirportCode) {
+                console.log('Error: Arrival city not found.');
+                return;
+            }
+
+            console.log('Departure Airport Code:', departureAirportCode);
+            console.log('Arrival Airport Code:', arrivalAirportCode);
+        })
+    })
+})
+
+
