@@ -3,7 +3,7 @@ nav {
 }
 
 body {
-    background-image:
+
 }
 
 h1 {
@@ -18,8 +18,9 @@ h1 {
 
 }
 .userInput {
+    width: 50vw;
     background-color: rgb(204, 200, 200);
-    position:sticky;
+    /* position:sticky; */
 }
 
 #ui-datepicker-div {
@@ -27,17 +28,12 @@ h1 {
     border: 7px double #b6abab;
 }
 
-.mapContainer {
-    /* position: relative; */
-    
-}
+
 div.column {
     position: relative;
 }
 
-div.box {
-    
-}
+
 
 footer {
     
