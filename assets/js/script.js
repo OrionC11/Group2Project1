@@ -109,7 +109,39 @@ function createSearchBox() {
     modalEl.append(searchBoxHTML)
 }
 
+
 function getAirportCode(cityName, callback) {
+    var getAccessCode = function(){
+        var accessToken = ""
+        $.ajax({
+            url: "https://test.api.amadeus.com/v1/security/oauth2/token",
+            method: 'POST',
+            data: {
+                grant_type: "client_credentials",
+                client_id: "fbjcGA5jsGIuiu2gNgHUJ0CfqCyZ9dMp",
+                client_secret: "P1wiYMjga5fzgGwe"
+            },
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            success: function(response) {
+                console.log(response)
+                if (response) {
+                     var accessToken = response.access_token
+                    // console.log(access)
+            } else {
+                console.log('No access token found')
+            }
+        }
+        }).then(response, function(){
+            return accessToken
+        }
+
+        )
+        // return access
+    }
+    var access = getAccessCode()
+    console.log(access)
     $.ajax({
         url: 'https://test.api.amadeus.com/v1/reference-data/locations',
         method: 'GET',
@@ -118,20 +150,21 @@ function getAirportCode(cityName, callback) {
             keyword: cityName
         },
         headers: {
-            'Authorization': "Bearer u8qLfD1DjVQvxmakDgLiDhG0i8PH"
+            'Authorization': "Bearer "+access
         },
         success: function (response) {
             if (response.data && response.data.length > 0) {
-                var airportCode = response.data[0].iataCode;
-                callback(airportCode);
+                var airportCode = response.data[0].iataCode
+                callback(airportCode)
+                return airportCode
             } else {
-                console.log('No airports found for the specified city.');
-                callback(null);
+                console.log('No airports found for the specified city.')
+                callback(null)
             }
         },
         error: function (xhr, status, error) {
-            console.log('Error:', xhr.responseText);
-            callback(null);
+            console.log('Error:', xhr.responseText)
+            callback(null)
         }
     });
 }
@@ -159,26 +192,22 @@ function getAirportCode(cityName, callback) {
 //     console.log(data);
 
 // }
-$('.sumbitBtn').click(function () {
-    var departureCity = $('.departureCity').val();
-    var arrivalCity = $('.arrivalCity').val();
-
+$('.submitBtn').click(function () {
+    var departureCity = $('.departureCity').val()
+    var arrivalCity = $('.arrivalCity').val()
     getAirportCode(departureCity, function (departureAirportCode) {
         if (!departureAirportCode) {
-            console.log('Error: Departure city not found.');
+            console.log('Error: Departure city not found.')
             return;
-        }
-
+        } 
+    })
         getAirportCode(arrivalCity, function (arrivalAirportCode) {
             if (!arrivalAirportCode) {
-                console.log('Error: Arrival city not found.');
-                return;
-            }
-
-            console.log('Departure Airport Code:', departureAirportCode);
-            console.log('Arrival Airport Code:', arrivalAirportCode);
-        })
-    })
+                console.log('Error: Arrival city not found.')
+                return 
+            } 
+        
+            console.log('Departure Airport Code:', departureAirportCode)
+            console.log('Arrival Airport Code:', arrivalAirportCode)
 })
-
-
+})
