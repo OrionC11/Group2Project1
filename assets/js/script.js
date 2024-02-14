@@ -223,7 +223,7 @@ function getAirportCode(cityName, callback) {
             }
         });
     });
-
+}
 // Click event handler for the submit button
 $('.submitBtn').click(function () {
     var departureCity = $('.departureCity').val();
