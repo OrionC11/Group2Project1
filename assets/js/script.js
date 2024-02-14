@@ -113,7 +113,6 @@ function createSearchBox() {
     $(".box .tt-search-box").remove();
     //Creates a new search box instance
     var ttSearchBox = new tt.plugins.SearchBox(tt.services, options)
-    console.log("dang")
     console.log(ttSearchBox, options)
     // Get the HTML for the search box and append it to the modal
     var searchBoxHTML = ttSearchBox.getSearchBoxHTML()
@@ -121,7 +120,6 @@ function createSearchBox() {
     console.log(modalEl)
     modalEl.append(searchBoxHTML)
 }
-
 // Function to retrieve access code
 function getAccessCode(callback) {
     $.ajax({
@@ -152,41 +150,6 @@ function getAccessCode(callback) {
         }
     });
 }
-
-// function getFlightOffers(accessToken, callback) {
-//     var departureCity = $('.departureCity').val();
-//     var arrivalCity = $('.arrivalCity').val();
-//     getAccessCode(function (accessToken) {
-//         if (!accessToken) {
-//             console.log('Error: Access token not obtained.');
-//             callback(null);
-//             return;
-//         }})
-//         $.ajax({
-//             url: 'test.api.amadeus.com/v2/shopping/flight-offers',
-//             method: 'GET',
-//             data: {
-//                 originLocationCode:   getAirportCode(departureCity, function (departureAirportCode) {
-//                     if (!departureAirportCode) {
-//                         console.log('Error: Departure city not found.');
-//                         return;
-//                     }}),
-//                 destinationLocationCode: getAirportCode(arrivalCity, function (arrivalAirportCode) {
-//                     if (!arrivalAirportCode) {
-//                         console.log('Error: Arrival city not found.');
-//                         return;
-//                     }}),
-//                 departureDate: $('#datepicker').val(),
-//                 adults: 1
-//             },
-//             headers: {
-//                 'Authorization': "Bearer " + accessToken
-//             },
-//             success: function(response) {
-//                 console.log(response)
-//             }
-//         })
-//     }
 
 // Function to get airport code
 function getAirportCode(cityName, callback) {
@@ -223,7 +186,7 @@ function getAirportCode(cityName, callback) {
             }
         });
     });
-
+}
 // Click event handler for the submit button
 $('.submitBtn').click(function () {
     var departureCity = $('.departureCity').val();
@@ -246,6 +209,8 @@ $('.submitBtn').click(function () {
             var arrivalAPCode = $('<div>').addClass('column').text('Arrival Airport: '+arrivalAirportCode);
             departureBox.append(arrivalInfo);
             arrivalInfo.append(arrivalAPCode);
+            var placeholder= $('<div>').addClass('column').text('More to be added soon, including departure and arrival dates and cost, advanced search functionality to be added soon as well')
+            departureBox.append(placeholder)
 
             // Now that we have both airport codes, call getFlightOffers
             if (departureAirportCode && arrivalAirportCode) {
@@ -287,5 +252,5 @@ function getFlightOffers(accessToken, departureAirportCode, arrivalAirportCode, 
             console.log('Error:', xhr.responseText);
             callback(null);
         }
-    });
+    })
 }
