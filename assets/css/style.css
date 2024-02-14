@@ -28,13 +28,13 @@ h2.subtitle {
 /* Styles for input section */
 .userInput {
     width: 50vw;
-    background-color: rgb(204, 200, 200);
+    background-color: rgb(113, 175, 223);
     /* position:sticky; */
 }
 
 /* Styles for jQuery datepicker div */
 #ui-datepicker-div {
-    background-color: whitesmoke;
+    background-color: rgb(162, 202, 251);
     border: 7px double #b6abab;
     z-index: 2;
 }
