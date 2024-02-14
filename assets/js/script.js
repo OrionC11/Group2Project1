@@ -153,41 +153,6 @@ function getAccessCode(callback) {
     });
 }
 
-// function getFlightOffers(accessToken, callback) {
-//     var departureCity = $('.departureCity').val();
-//     var arrivalCity = $('.arrivalCity').val();
-//     getAccessCode(function (accessToken) {
-//         if (!accessToken) {
-//             console.log('Error: Access token not obtained.');
-//             callback(null);
-//             return;
-//         }})
-//         $.ajax({
-//             url: 'test.api.amadeus.com/v2/shopping/flight-offers',
-//             method: 'GET',
-//             data: {
-//                 originLocationCode:   getAirportCode(departureCity, function (departureAirportCode) {
-//                     if (!departureAirportCode) {
-//                         console.log('Error: Departure city not found.');
-//                         return;
-//                     }}),
-//                 destinationLocationCode: getAirportCode(arrivalCity, function (arrivalAirportCode) {
-//                     if (!arrivalAirportCode) {
-//                         console.log('Error: Arrival city not found.');
-//                         return;
-//                     }}),
-//                 departureDate: $('#datepicker').val(),
-//                 adults: 1
-//             },
-//             headers: {
-//                 'Authorization': "Bearer " + accessToken
-//             },
-//             success: function(response) {
-//                 console.log(response)
-//             }
-//         })
-//     }
-
 // Function to get airport code
 function getAirportCode(cityName, callback) {
     // Call getAccessCode to retrieve access token
@@ -288,4 +253,4 @@ function getFlightOffers(accessToken, departureAirportCode, arrivalAirportCode, 
             callback(null);
         }
     })
-}}
+}
