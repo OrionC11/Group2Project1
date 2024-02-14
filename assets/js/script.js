@@ -11,29 +11,38 @@
 let submitBtn = $('.submitBtn')
 var accessToken;
 
-
+// Function to display the map
 function displayMap() {
+    // Define the center of the map
     let center = [4, 44.4]
+    // Create a new map instance
     var map = tt.map({
         key: "ZKJKtC3EXjK9EOei1P0ipgADrv9RblQy",
         container: "map",
         center: center,
         zoom: 10
     })
+    // Add a marker to  the map
     map.on('load', () => {
         new tt.Marker().setLngLat(center).addTo(map)
     })
+    // Add controls to the map
     map.addControl(new tt.FullscreenControl());
     map.addControl(new tt.NavigationControl())
     console.log("test log")
 }
+// Calls the displayMap function
 displayMap()
+
+// Initialize datepicker
 $(function () {
     $("#datepicker").datepicker({
         changeMonth: true,
         changeYear: true
     })
 });
+
+// Execute when the DOM content is loaded
 document.addEventListener('DOMContentLoaded', () => {
     // Functions to open and close a modal
     function openModal($el) {
@@ -84,6 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// Function to create the search box
 function createSearchBox() {
     var options = {
         searchOptions: {
@@ -97,19 +107,22 @@ function createSearchBox() {
             key: "ZKJKtC3EXjK9EOei1P0ipgADrv9RblQy",
             language: "en-GB",
         },
-
     }
+
+    // Remove any existing search box
     $(".box .tt-search-box").remove();
+    //Creates a new search box instance
     var ttSearchBox = new tt.plugins.SearchBox(tt.services, options)
     console.log("dang")
     console.log(ttSearchBox, options)
+    // Get the HTML for the search box and append it to the modal
     var searchBoxHTML = ttSearchBox.getSearchBoxHTML()
     var modalEl = $(".box")
     console.log(modalEl)
     modalEl.append(searchBoxHTML)
 }
 
-
+// Function to retrieve access code
 function getAccessCode(callback) {
     $.ajax({
         url: "https://test.api.amadeus.com/v1/security/oauth2/token",
@@ -175,7 +188,7 @@ function getAccessCode(callback) {
 //         })
 //     }
 
-// Define getAirportCode function
+// Function to get airport code
 function getAirportCode(cityName, callback) {
     // Call getAccessCode to retrieve access token
     getAccessCode(function (accessToken) {
@@ -210,7 +223,6 @@ function getAirportCode(cityName, callback) {
             }
         });
     });
-}
 
 // Click event handler for the submit button
 $('.submitBtn').click(function () {
@@ -251,9 +263,9 @@ $('.submitBtn').click(function () {
     });
 });
 
-// Modify getFlightOffers function to accept departure and arrival airport codes
+// Function to get flight offers
 function getFlightOffers(accessToken, departureAirportCode, arrivalAirportCode, callback) {
-    var date = $('#datepicker').datepicker({dateFormat: 'YY-MM-DD'}).val();
+    var date = $('#datepicker').datepicker({dateFormat: 'YYYY-MM-DD'}).val();
     console.log(date)
     console.log('Access Token: '+ accessToken)
     $.ajax({

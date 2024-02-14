@@ -1,48 +1,50 @@
-nav {
-    
-}
-
+/* Global styles for body */
 body {
 
 }
 
+/* Styles for h1 elements */
 h1 {
     color: lightskyblue;
     font-size: 40px;
 }
 
-title {
-
-}
-
+/* Styles for h2 subtitles */
 h2.subtitle {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 15px;
 }
 
+/* Styles for the map container */
 .mapContainer {
     width: 50vw; 
     height: 50vh;
     border: 1px solid black;
+    position: relative;
+    z-index: 1;
 
 }
 
+/* Styles for input section */
 .userInput {
     width: 50vw;
     background-color: rgb(204, 200, 200);
     /* position:sticky; */
 }
 
+/* Styles for jQuery datepicker div */
 #ui-datepicker-div {
     background-color: whitesmoke;
     border: 7px double #b6abab;
     z-index: 2;
 }
 
+/* Styles for modal content with class "box" */
 modal-content.box {
     position: relative;
     z-index: 3;
 }
+
 
 .flightsContainer {
     width: 50vw;
@@ -56,11 +58,12 @@ modal-content.box {
 }
 
 
+/* Styles for div elements with class "column" */
 div.column {
     position: relative;
 }
 
-
+/* Styles for footer */
 footer {
     
 }
