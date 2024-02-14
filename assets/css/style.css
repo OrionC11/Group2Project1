@@ -1,8 +1,8 @@
 /* Global styles for body */
 body {
-background-image: url(https://images.unsplash.com/photo-1587893904933-5b23fefaea6d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+background-image: url("https://source.unsplash.com/1600x900/?flights");
 background-color: #cccccc;
-  height: 950px;
+  /* height: vh; */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -10,10 +10,30 @@ background-color: #cccccc;
 
 }
 
+.hero-body {
+    background: #c9c6c6d0; /*Semi-transparent black background*/
+    /* color: white; */
+    padding: 2em;
+    border-radius: 30px; /* Rounded Corners */
+    width: 100%;
+    /* max-width: 420px; */
+    /* margin: 0 auto; Center the card horizontally */
+    margin-top: 0.5em;
+    /* position:relative; */
+}
+
 /* Styles for h1 elements */
 h1 {
     color: lightskyblue;
     font-size: 40px;
+}
+
+h1.title {
+    color: rgb(49, 49, 49);
+}
+
+h2.subtitle {
+    color: rgb(49, 49, 49);
 }
 
 /* Styles for h2 subtitles */
@@ -68,6 +88,7 @@ modal-content.box {
 /* Styles for div elements with class "column" */
 div.column {
     position: relative;
+    border-radius: 30px; /* Rounded Corners */
 }
 
 /* Styles for footer */
