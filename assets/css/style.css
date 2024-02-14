@@ -55,8 +55,11 @@ h2.subtitle {
 /* Styles for input section */
 .userInput {
     width: 50vw;
-    background-color: rgb(113, 175, 223);
+    background-color: rgba(113, 175, 223,0.855);
     /* position:sticky; */
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 15px;
 }
 
 /* Styles for jQuery datepicker div */
@@ -75,7 +78,10 @@ modal-content.box {
 
 .flightsContainer {
     width: 50vw;
-    background-color: rgba(204, 204, 216, 0.919);
+    background-color: rgba(204, 204, 216, 0.800);
+    border-radius: 15px;
+    margin-bottom: 10px;
+    margin-top:10px;
 
 }
 
@@ -83,7 +89,6 @@ modal-content.box {
     position: relative;
     z-index: 1;
 }
-
 
 /* Styles for div elements with class "column" */
 div.column {
