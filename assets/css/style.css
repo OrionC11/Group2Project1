@@ -44,6 +44,12 @@ modal-content.box {
     z-index: 3;
 }
 
+.flightsContainer {
+    width: 50vw;
+    background-color: rgba(204, 204, 216, 0.919);
+
+}
+
 .mapContainer {
     position: relative;
     z-index: 1;
