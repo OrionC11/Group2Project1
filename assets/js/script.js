@@ -9,7 +9,7 @@
 // "state": "approved",
 // "scope": ""
 let submitBtn = $('.submitBtn')
-
+var accessToken;
 
 // Function to display the map
 function displayMap() {
@@ -136,9 +136,11 @@ function getAccessCode(callback) {
             'Content-Type': 'application/x-www-form-urlencoded'
         },
         success: function (response) {
-            console.log(response)
+            // console.log(response)
             if (response && response.access_token) {
                 callback(response.access_token);
+                accessToken = response.access_token
+                // console.log('Access Token: '+ accessToken)
             } else {
                 console.log('No access token found');
                 callback(null);
@@ -221,24 +223,6 @@ function getAirportCode(cityName, callback) {
             }
         });
     });
-}
-
-// Click event handler for the submit button
-// $('.submitBtn').click(function () {
-
-//     getFlightOffers(function (departureAirportCode, arrivalAirportCode) {
-
-//         if (!departureAirportCode) {
-//             console.log('Error: Departure Airport Code not found.');
-//             callback(null);
-//             return;
-//         } else if (!arrivalAirportCode){
-//             console.log('Error: Arrival Airport Code not found.');
-//             callback(null);
-//             return;
-//         }
-//     })
-// })
 
 // Click event handler for the submit button
 $('.submitBtn').click(function () {
@@ -249,9 +233,20 @@ $('.submitBtn').click(function () {
     getAirportCode(departureCity, function (departureCode) {
         departureAirportCode = departureCode;
         console.log ("Departure Airport Code: " + departureAirportCode)
+        var departureBox = $('.departureFlight').addClass('columns');
+        var departureInfo = $('<div>').addClass('column');
+        var departureAPCode = $('<div>').addClass('column').text('Departure Aiport: '+departureAirportCode);
+        departureBox.empty().append(departureInfo);
+        departureInfo.append(departureAPCode);
         getAirportCode(arrivalCity, function (arrivalCode) {
             arrivalAirportCode = arrivalCode;
             console.log("Arrival Airport Code: "+arrivalAirportCode)
+            var departureBox = $('.departureFlight');
+            var arrivalInfo = $('<div>').addClass('column');
+            var arrivalAPCode = $('<div>').addClass('column').text('Arrival Airport: '+arrivalAirportCode);
+            departureBox.append(arrivalInfo);
+            arrivalInfo.append(arrivalAPCode);
+
             // Now that we have both airport codes, call getFlightOffers
             if (departureAirportCode && arrivalAirportCode) {
                 getAccessCode(function (accessToken) {
@@ -259,7 +254,7 @@ $('.submitBtn').click(function () {
                         console.log('Error: Access token not obtained.');
                         return;
                     }
-                    
+                    getFlightOffers(accessToken, departureAirportCode, arrivalAirportCode)
                     });
                 } else {
                 console.log('Error: Airport codes not obtained.');
@@ -272,7 +267,7 @@ $('.submitBtn').click(function () {
 function getFlightOffers(accessToken, departureAirportCode, arrivalAirportCode, callback) {
     var date = $('#datepicker').datepicker({dateFormat: 'YYYY-MM-DD'}).val();
     console.log(date)
-
+    console.log('Access Token: '+ accessToken)
     $.ajax({
         url: 'https://test.api.amadeus.com/v2/shopping/flight-offers',
         method: 'GET',
