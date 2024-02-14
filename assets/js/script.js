@@ -113,7 +113,6 @@ function createSearchBox() {
     $(".box .tt-search-box").remove();
     //Creates a new search box instance
     var ttSearchBox = new tt.plugins.SearchBox(tt.services, options)
-    console.log("dang")
     console.log(ttSearchBox, options)
     // Get the HTML for the search box and append it to the modal
     var searchBoxHTML = ttSearchBox.getSearchBoxHTML()
@@ -121,7 +120,6 @@ function createSearchBox() {
     console.log(modalEl)
     modalEl.append(searchBoxHTML)
 }
-
 // Function to retrieve access code
 function getAccessCode(callback) {
     $.ajax({
@@ -211,6 +209,8 @@ $('.submitBtn').click(function () {
             var arrivalAPCode = $('<div>').addClass('column').text('Arrival Airport: '+arrivalAirportCode);
             departureBox.append(arrivalInfo);
             arrivalInfo.append(arrivalAPCode);
+            var placeholder= $('<div>').addClass('column').text('More to be added soon, including departure and arrival dates and cost, advanced search functionality to be added soon as well')
+            departureBox.append(placeholder)
 
             // Now that we have both airport codes, call getFlightOffers
             if (departureAirportCode && arrivalAirportCode) {
