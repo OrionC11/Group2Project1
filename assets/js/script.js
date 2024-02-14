@@ -287,5 +287,5 @@ function getFlightOffers(accessToken, departureAirportCode, arrivalAirportCode, 
             console.log('Error:', xhr.responseText);
             callback(null);
         }
-    });
-}
+    })
+}}
