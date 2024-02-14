@@ -1,30 +1,37 @@
 <!DOCTYPE html>
 <html lang="">
-
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Flight&Flush</title>
+  <!-- Link to Bulma CSS framework -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.0/css/bulma.css" />
+  <!-- Link to TomTom Maps SDK CSS  -->
   <link rel="stylesheet" type="text/css" href="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.0/maps/maps.css" />
+  <!-- Link to jQuery UI CSS -->
   <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"/>
+  <!-- Link to TomTom SearchBox CSS -->
   <link
   rel="stylesheet"
   type="text/css"
   href="https://api.tomtom.com/maps-sdk-for-web/cdn/plugins/SearchBox/3.1.12/SearchBox.css"
 />
+<!-- Custom CSS -->
   <link rel="stylesheet" href="./assets/css/style.css"/>
 </head>
 
 <body>
+  <!-- Hero Section -->
   <section class="hero">
     <div class="hero-body">
       <div class="container">
         <h1 class="title">
+          <!-- Application Title -->
           Flight&Flush
         </h1>
         
+        <!-- Subtitle with icon  -->
         <h2 class="subtitle">
           <svg stroke="currentColor" fill="currentColor" stroke-width="0" version="1.1" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M12 9.999l-2.857-2.857 6.857-5.143-2-2-8.571 3.429-2.698-2.699c-0.778-0.778-1.864-0.964-2.414-0.414s-0.364 1.636 0.414 2.414l2.698 2.698-3.429 8.572 2 2 5.144-6.857 2.857 2.857v4h2l1-3 3-1v-2l-4 0z"></path></svg>
           Streamline your travels, flush away the hassle!
@@ -33,10 +40,12 @@
       </div>
     </div>
   </section>
+  
   <div class="container">
+    <!-- User input section -->
     <div class="userInput">
       <div class="columns">
-
+        <!-- Departure Date input -->
         <div class="column">
           <label for="depart">Departure Date:</label>
           <input type="text" class="form-control ddate dp" id="datepicker" autocomplete="off">
@@ -45,9 +54,11 @@
           <label for="return"> Return Date: </label>
           <input type="text" class="form-control rdate dp" id="dp2" autocomplete="off">
         </div> -->
+        <!-- Advanced Search button -->
         <div class="column">
           <button class="button is-link js-modal-trigger" data-target="modal-js-example">Advanced Search</button>
 
+          <!-- Advanced Search modal -->
           <div id="modal-js-example" class="modal">
             <div class="modal-background"></div>
           
@@ -61,30 +72,38 @@
         </div>
       </div>
       <div class="columns">
+        <!-- Departing From input -->
         <div class="column">
           <label for="departCity">Departing From:</label>
           <input type="text" class="departureCity">
         </div>
+        <!-- Going to input -->
         <div class="column">
           <label for="ArrivalCity">Going to:</label>
           <input type="text" class="arrivalCity">
         </div>
+        <!-- Submit button -->
         <div class="column">
           <button class="button submitBtn" type="submit">Submit</button>
         </div>
       </div>
     </div>
+
+    <!-- Flights container -->
     <div class="flightsContainer">
       <div class="departureFlight">
-
       </div>
       <div class="returnFlight">
       </div>
     </div>
+
+    <!-- Map container -->
     <div class="mapContainer">
       <div id="map" class="map" style="width: 100%; height: 100%;"></div>
     </div>
   </div>
+
+  <!-- Footer section -->
   <footer class="footer">
     <div class="container">
       <div class="content has-text-centered">
@@ -99,6 +118,7 @@
       </div>
     </div>
   </footer>
+  <!-- Javascript sources -->
   <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.0/maps/maps-web.min.js"></script>
   <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.0/services/services-web.min.js"></script>
   <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/plugins/SearchBox/3.1.12/SearchBox-web.js"></script>
