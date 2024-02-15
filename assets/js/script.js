@@ -192,7 +192,13 @@ $('.submitBtn').click(function () {
     var departureCity = $('.departureCity').val();
     var arrivalCity = $('.arrivalCity').val();
     var departureAirportCode, arrivalAirportCode;
-
+    var selectedDate = $('#datepicker').val
+    if (departureCity.trim()  !== '' && arrivalCity.trim() !== '') {
+        localStorage.setItem('Departure City: ', departureCity)
+        localStorage.setItem('Arrival City: ', arrivalCity)
+        $('.departureCity').val('')
+        $('.arrivalCity').val('')
+    }
     getAirportCode(departureCity, function (departureCode) {
         departureAirportCode = departureCode;
         console.log ("Departure Airport Code: " + departureAirportCode)
@@ -227,6 +233,13 @@ $('.submitBtn').click(function () {
         });
     });
 });
+
+$('#prevBtn').click(function (){
+    var departureCity = localStorage.getItem('Departure City: ')
+    var arrivalCity = localStorage.getItem('Arrival City: ')
+    $('.departureCity').val(departureCity)
+    $('.arrivalCity').val(arrivalCity)
+})
 
 // Function to get flight offers
 function getFlightOffers(accessToken, departureAirportCode, arrivalAirportCode, callback) {
