@@ -22,6 +22,8 @@ To get started with Flight&Flush, follow these steps:
 3. Enter your departure date, departing city, and destination city.
 4. Click the "Submit" button to view flight offers and the map.
 
+## Link to deployed application:[Click me to see the deployed site!](Https://Orionc11.github.io/Group2Project1)
+
 ## API's Used
 
 Flight&Flush utilizes the following API's:
