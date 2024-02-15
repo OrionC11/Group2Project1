@@ -1,4 +1,6 @@
 /* Global styles for body */
+@import url('https://fonts.googleapis.com/css2?family=Protest+Revolution&display=swap');
+
 body {
 background-image: url("https://source.unsplash.com/1600x900/?flights");
 background-color: #cccccc;
@@ -25,21 +27,21 @@ background-color: #cccccc;
 /* Styles for h1 elements */
 h1 {
     color: lightskyblue;
-    font-size: 40px;
+    font-family: "Protest Revolution", sans-serif;
+
 }
 
 h1.title {
     color: rgb(49, 49, 49);
+    font-size: 90px;
 }
 
-h2.subtitle {
-    color: rgb(49, 49, 49);
-}
 
 /* Styles for h2 subtitles */
 h2.subtitle {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 15px;
+    color: rgb(49, 49, 49);
+    font-size: 30px;
 }
 
 /* Styles for the map container */
