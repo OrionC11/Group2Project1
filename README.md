@@ -11,10 +11,10 @@ Flight&Flush is a web application designed to streamline your travel planning pr
 - **Search Box**: Dynamically creates a search box for location search using the TomTom SearchBox plugin.
 - **API Integration**: Integrates with the Amadeus API to retrieve flight offers and airport codes.
 
-##Screenshot
+## Screenshot
+![screenshot](https://github.com/OrionC11/Group2Project1/blob/main/assets/images/screencapture-orionc11-github-io-Group2Project1-2024-02-14-17_48_53.png)
 
 ## Getting Started
-![screenshot](https://github.com/OrionC11/Group2Project1/blob/main/assets/images/screencapture-orionc11-github-io-Group2Project1-2024-02-14-17_48_53.png)
 To get started with Flight&Flush, follow these steps:
 
 1. Clone this repository to your local machine.
